@@ -315,6 +315,9 @@ origins:
 #       # path defines the directory location under which the Trickster cache will be maintained
 #       path: /tmp/trickster
 
+#       # subPath identifies an existing subdirectory on a persistent volume to use for this cache
+#       subPath:
+
 #     ## Configuration options when using a bbolt Cache
 #     bbolt:
 #       # file defines the file where the Trickster cache will be maintained

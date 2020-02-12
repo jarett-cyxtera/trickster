@@ -128,11 +128,17 @@ data:
           {{- if .redis.idleCheckFrequencyMs }}
         idle_check_frequency_ms = {{ .redis.idleCheckFrequencyMs }}
           {{- end }}
-          {{- else if and (eq .cacheType "filesystem") ( .filesystem ) }}
+          {{- else if (eq .cacheType "filesystem") }}
 
         {{ printf "[caches.%s.filesystem]" .name }}
-          {{- if .filesystem.path }}
+          {{- if .filesystem }}
+            {{- if .filesystem.path }}
         cache_path = {{ .filesystem.path | quote }}
+            {{- else }}
+        cache_path = {{ printf "/tmp/trickster/%s" .name }}
+            {{- end }}
+          {{- else }}
+        cache_path = {{ printf "/tmp/trickster/%s" .name }}
           {{- end }}
         {{- else if and (eq .cacheType "bbolt") ( .bbolt ) }}
 
