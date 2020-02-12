@@ -11,6 +11,7 @@ metadata:
 {{- end }}
   labels:
     {{- include "trickster.labels" . | nindent 4 }}
+  name: {{ template "trickster.fullname" . }}
 {{- range $key, $value := .Values.ingress.extraLabels }}
     {{ $key }}: {{ $value }}
 {{- end }}
